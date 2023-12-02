@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html><head><meta charset="utf-8"><title>Verse.Confluence</title><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css'/><style>.github-fork-ribbon:before { background-color: #333; }</style><link rel="stylesheet" href="css/Agda.css"></head><body><a class='github-fork-ribbon'href='https://github.com/omelkonian/formal-verse-calculus/tree/master/Verse/Confluence.agda'data-ribbon='Source code on Github' title='Source code on Github'>Source code on Github</a><pre class="Agda"><a id="1" class="Symbol">{-#</a> <a id="5" class="Keyword">OPTIONS</a> <a id="13" class="Pragma">--allow-unsolved-metas</a> <a id="36" class="Symbol">#-}</a>
+<a id="40" class="Keyword">module</a> <a id="47" href="Verse.Confluence.html" class="Module">Verse.Confluence</a> <a id="64" class="Keyword">where</a>
+
+<a id="71" class="Keyword">open</a> <a id="76" class="Keyword">import</a> <a id="83" href="Verse.Prelude.html" class="Module">Verse.Prelude</a>
+<a id="97" class="Keyword">open</a> <a id="102" class="Keyword">import</a> <a id="109" href="Verse.Core.html" class="Module">Verse.Core</a>
+<a id="120" class="Keyword">open</a> <a id="125" class="Keyword">import</a> <a id="132" href="Verse.Helpers.html" class="Module">Verse.Helpers</a>
+<a id="146" class="Keyword">open</a> <a id="151" class="Keyword">import</a> <a id="158" href="Verse.Context.html" class="Module">Verse.Context</a>
+<a id="172" class="Keyword">open</a> <a id="177" class="Keyword">import</a> <a id="184" href="Verse.RewriteSemantics.html" class="Module">Verse.RewriteSemantics</a>
+
+<a id="confluence"></a><a id="208" href="Verse.Confluence.html#208" class="Function">confluence</a> <a id="219" class="Symbol">:</a> <a id="221" href="Induction.WellFounded.html#1257" class="Function">WellFounded</a> <a id="233" href="Verse.RewriteSemantics.html#158" class="Datatype Operator">_—→_</a>
+<a id="238" href="Verse.Confluence.html#208" class="Function">confluence</a> <a id="249" class="Symbol">=</a> <a id="251" href="Induction.WellFounded.html#1071" class="InductiveConstructor">acc</a> <a id="255" href="Function.Base.html#1040" class="Function Operator">∘</a> <a id="257" href="Verse.Confluence.html#355" class="Function Operator">_←—_</a>
+  <a id="264" class="Keyword">where</a>
+    <a id="274" href="Verse.Confluence.html#274" class="Function">absurd₁</a> <a id="282" class="Symbol">:</a> <a id="284" class="Symbol">∀</a> <a id="286" class="Symbol">{</a><a id="287" href="Verse.Confluence.html#287" class="Bound">y</a> <a id="289" href="Verse.Confluence.html#289" class="Bound">v</a> <a id="291" href="Verse.Confluence.html#291" class="Bound">v′</a><a id="293" class="Symbol">}</a> <a id="295" class="Symbol">→</a> <a id="297" href="Relation.Nullary.html#665" class="Function Operator">¬</a> <a id="299" class="Symbol">(</a><a id="300" href="Verse.Confluence.html#287" class="Bound">y</a> <a id="302" href="Verse.RewriteSemantics.html#158" class="Datatype Operator">—→</a> <a id="305" href="Verse.Confluence.html#289" class="Bound">v</a> <a id="307" href="Verse.Core.html#1747" class="Function Operator">＝</a> <a id="309" href="Verse.Core.html#1878" class="InductiveConstructor">`𝕧</a> <a id="312" href="Verse.Confluence.html#291" class="Bound">v′</a><a id="314" class="Symbol">)</a>
+    <a id="320" href="Verse.Confluence.html#274" class="Function">absurd₁</a> <a id="328" class="Symbol">(</a><a id="329" href="Verse.RewriteSemantics.html#1395" class="InductiveConstructor">NORM-EQ-SWAP</a> <a id="342" class="Symbol">⦃</a> <a id="344" class="Symbol">()</a> <a id="347" class="Symbol">⦄)</a>
+
+    <a id="355" href="Verse.Confluence.html#355" class="Function Operator">_←—_</a> <a id="360" class="Symbol">:</a> <a id="362" class="Symbol">∀</a> <a id="364" href="Verse.Confluence.html#364" class="Bound">e</a> <a id="366" href="Verse.Confluence.html#366" class="Bound">e′</a> <a id="369" class="Symbol">→</a> <a id="371" href="Verse.Confluence.html#366" class="Bound">e′</a> <a id="374" href="Verse.RewriteSemantics.html#158" class="Datatype Operator">—→</a> <a id="377" href="Verse.Confluence.html#364" class="Bound">e</a> <a id="379" class="Symbol">→</a> <a id="381" href="Induction.WellFounded.html#1009" class="Datatype">Acc</a> <a id="385" href="Verse.RewriteSemantics.html#158" class="Datatype Operator">_—→_</a> <a id="390" href="Verse.Confluence.html#366" class="Bound">e′</a>
+    <a id="397" href="Verse.Confluence.html#355" class="Function Operator">_←—_</a> <a id="402" class="Symbol">=</a> <a id="404" class="Hole">{!!}</a>
+    <a id="413" class="Comment">-- ((.(𝕧 _) ＝ .(` v′)) ←— (v′ ＝ .(`𝕧 _))) NORM-EQ-SWAP</a>
+    <a id="472" class="Comment">--   = acc λ y y→ → ⊥-elim $ absurd₁ y→</a>
+    <a id="516" class="Comment">-- ((v ＝ e) ←— (≠ e′)) ()</a>
+    <a id="546" class="Comment">-- ((≠ .fail) ←— (v ＝ .(` _))) (U-FAIL x x₁) = acc λ _ y→ → {!(_ ←— _)!}</a>
+    <a id="623" class="Comment">-- ((≠ e)   ←— (≠ e′))    p = {!p!}</a>
+
+<a id="660" class="Comment">-- confluence : WellFounded _≠—→≠_</a>
+<a id="695" class="Comment">-- confluence = acc ∘ _←—_</a>
+<a id="722" class="Comment">--   where</a>
+<a id="733" class="Comment">--     _←—_ : ∀ e e′ → e′ ≠—→≠ e → Acc _≠—→≠_ e′</a>
+<a id="782" class="Comment">--     (e ←— e′) p = {!!}</a>
+
+<a id="809" class="Comment">-- confluence′ : WellFounded _—→_</a>
+<a id="843" class="Comment">-- confluence′ = acc ∘ _←—_</a>
+<a id="871" class="Comment">--   where</a>
+<a id="882" class="Comment">--     _←—_ : ∀ e e′ → e′ —→ e → Acc _—→_ e′</a>
+<a id="927" class="Comment">--     ((≠ e) ←— (≠ e′)) (≠ p) = {!!}</a>
+<a id="965" class="Comment">--     (.(≠ fail) ←— .(_ ＝` _)) (U-FAIL x x₁) = {!!}</a>
+</pre></body></html>
