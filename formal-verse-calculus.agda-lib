@@ -1,0 +1,5 @@
+name: formal-verse-calculus
+depend:
+  standard-library
+  formal-prelude
+include: .
